@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'cake.dart';
 import 'method_channel.dart';
+import 'sample_view.dart';
 
 void main() => runApp(MyApp());
 
@@ -11,6 +12,8 @@ class MyApp extends StatelessWidget {
   final Map<String, WidgetBuilder> routes = {
     '自绘控件': (context) => Cake(),
     'method_channel': (context) => MethodChannelWidgt(),
+    'sample_view': (context) => SampleView(),
+
   };
 
   @override
@@ -57,6 +60,11 @@ class MyHomePage extends StatelessWidget {
               title: Text('method channel'),
               onTap: () {
                 Navigator.pushNamed(context, 'method_channel');
+              },
+            ),ListTile(
+              title: Text('使用原生绘制的控件'),
+              onTap: () {
+                Navigator.pushNamed(context, 'sample_view');
               },
             ),
           ],

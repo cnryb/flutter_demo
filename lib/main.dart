@@ -4,18 +4,20 @@ import 'cake.dart';
 import 'method_channel.dart';
 import 'sample_view.dart';
 import 'stack_positioned.dart';
+import 'row_expanded.dart';
+
+final Map<String, WidgetBuilder> routes = {
+  '自绘控件': (context) => Cake(),
+  'method_channel': (context) => MethodChannelWidgt(),
+  '使用原生绘制的控件': (context) => SampleView(),
+  '层叠布局': (context) => StackPositionedWidget(),
+  'row&expanded': (context) => RowExpandedWidget()
+};
 
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   final appTitle = 'Flutter Demo';
-
-  final Map<String, WidgetBuilder> routes = {
-    '自绘控件': (context) => Cake(),
-    'method_channel': (context) => MethodChannelWidgt(),
-    'sample_view': (context) => SampleView(),
-    'stack_positioned': (context) => StackPositionedWidget(),
-  };
 
   @override
   Widget build(BuildContext context) {
@@ -32,6 +34,25 @@ class MyHomePage extends StatelessWidget {
 
   MyHomePage({Key key, this.title}) : super(key: key);
 
+  List<Widget> _getMenus(BuildContext context) {
+    List<Widget> list = new List<Widget>();
+    list.add(DrawerHeader(
+      child: Text('菜单'),
+      decoration: BoxDecoration(
+        color: Colors.blue,
+      ),
+    ));
+    routes.forEach((key, value) {
+      list.add(ListTile(
+        title: Text(key),
+        onTap: () {
+          Navigator.pushNamed(context, key);
+        },
+      ));
+    });
+    return list;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,41 +63,10 @@ class MyHomePage extends StatelessWidget {
         // through the options in the drawer if there isn't enough vertical
         // space to fit everything.
         child: ListView(
-          // Important: Remove any padding from the ListView.
-          padding: EdgeInsets.zero,
-          children: <Widget>[
-            DrawerHeader(
-              child: Text('菜单'),
-              decoration: BoxDecoration(
-                color: Colors.blue,
-              ),
+            // Important: Remove any padding from the ListView.
+            padding: EdgeInsets.zero,
+            children: _getMenus(context)
             ),
-            ListTile(
-              title: Text('自绘控件'),
-              onTap: () {
-                Navigator.pushNamed(context, '自绘控件');
-              },
-            ),
-            ListTile(
-              title: Text('method channel'),
-              onTap: () {
-                Navigator.pushNamed(context, 'method_channel');
-              },
-            ),
-            ListTile(
-              title: Text('使用原生绘制的控件'),
-              onTap: () {
-                Navigator.pushNamed(context, 'sample_view');
-              },
-            ),
-            ListTile(
-              title: Text('层叠布局'),
-              onTap: () {
-                Navigator.pushNamed(context, 'stack_positioned');
-              },
-            ),
-          ],
-        ),
       ),
     );
   }

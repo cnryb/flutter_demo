@@ -34,9 +34,12 @@ class WheelPainter extends CustomPainter {
 class Cake extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return CustomPaint(
+    return Scaffold(
+      appBar: AppBar(title: Text('自绘控件'),),
+      body: CustomPaint(
         size: Size(200, 200),
         painter: WheelPainter(),
-      );
+      ),
+    );
   }
 }

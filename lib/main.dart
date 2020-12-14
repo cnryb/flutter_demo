@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 
 import 'cake.dart';
+import 'method_channel.dart';
 
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   final appTitle = 'Flutter Demo';
 
-  final  Map<String, WidgetBuilder> routes = {
-    '自绘控件':(context)=>Cake(),
-   };
+  final Map<String, WidgetBuilder> routes = {
+    '自绘控件': (context) => Cake(),
+    'method_channel': (context) => MethodChannelWidgt(),
+  };
 
   @override
   Widget build(BuildContext context) {
@@ -52,12 +54,9 @@ class MyHomePage extends StatelessWidget {
               },
             ),
             ListTile(
-              title: Text('Item 2'),
+              title: Text('method channel'),
               onTap: () {
-                // Update the state of the app
-                // ...
-                // Then close the drawer
-                Navigator.pop(context);
+                Navigator.pushNamed(context, 'method_channel');
               },
             ),
           ],

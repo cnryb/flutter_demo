@@ -1,20 +1,8 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
-import 'cake.dart';
-import 'method_channel.dart';
-import 'sample_view.dart';
-import 'stack_positioned.dart';
-import 'row_expanded.dart';
-import 'list_view.dart';
-
-final Map<String, WidgetBuilder> routes = {
-  '自绘控件': (context) => Cake(),
-  'method_channel': (context) => MethodChannelWidgt(),
-  '使用原生绘制的控件': (context) => SampleView(),
-  '层叠布局': (context) => StackPositionedWidget(),
-  'row&expanded': (context) => RowExpandedWidget(),
-  'listview&简单控件': (context) => ListViewWidget(),
-};
+import 'routes.dart';
 
 void main() => runApp(MyApp());
 
@@ -55,17 +43,24 @@ class MyHomePage extends StatelessWidget {
     return list;
   }
 
+  Widget _getDownloadLink(){
+    if(kIsWeb == true){
+      return Center(child: RaisedButton(child: Text('安卓App下载'),
+      onPressed: () {
+        launch("/app-release.apk");
+      },));
+    }else{
+      return Center(child: Text('My Page!'));
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text(title)),
-      body: Center(child: Text('My Page!')),
+      body: _getDownloadLink(),
       drawer: Drawer(
-        // Add a ListView to the drawer. This ensures the user can scroll
-        // through the options in the drawer if there isn't enough vertical
-        // space to fit everything.
         child: ListView(
-            // Important: Remove any padding from the ListView.
             padding: EdgeInsets.zero,
             children: _getMenus(context)
             ),

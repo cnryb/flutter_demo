@@ -58,7 +58,6 @@ class _JsonTestState extends State<JsonTestWidget> {
                 str = jsonEncode(p);
               });
             },
-            style: TextStyle(height: 30),
           )
         ],
       ),

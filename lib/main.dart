@@ -13,7 +13,7 @@ final Map<String, WidgetBuilder> routes = {
   '使用原生绘制的控件': (context) => SampleView(),
   '层叠布局': (context) => StackPositionedWidget(),
   'row&expanded': (context) => RowExpandedWidget(),
-  'listvie&简单控件': (context) => ListViewWidget(),
+  'listview&简单控件': (context) => ListViewWidget(),
 };
 
 void main() => runApp(MyApp());

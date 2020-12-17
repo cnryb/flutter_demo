@@ -8,6 +8,7 @@ import 'row_expanded.dart';
 import 'list_view.dart';
 import './data_transfer/main.dart';
 import 'json_test.dart';
+import 'animaiton.dart';
 
 final Map<String, WidgetBuilder> routes = {
   'listview&简单控件': (context) => ListViewWidget(),
@@ -18,4 +19,5 @@ final Map<String, WidgetBuilder> routes = {
   'method_channel': (context) => MethodChannelWidgt(),
   '使用原生绘制的控件': (context) => SampleView(),
   'json_test': (context) => JsonTestWidget(),
+  'animaiton': (context) => BuilderAnimateWidget(),
 };

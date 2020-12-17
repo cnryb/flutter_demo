@@ -31,8 +31,13 @@ class _ListViewWidgetState extends State<ListViewWidget> {
               });
             },
           ),
-          Image.network(
-              "https://is1-ssl.mzstatic.com/image/thumb/Purple113/v4/6b/4c/26/6b4c267e-8360-16c9-d019-c0b2fe013cad/AppIcon-0-0-1x_U007emarketing-0-0-0-9-0-85-220.png/246x0w.png"),
+          FadeInImage.assetNetwork(
+            placeholder: "assets/loading.gif",
+            image:
+                "https://is1-ssl.mzstatic.com/image/thumb/Purple113/v4/6b/4c/26/6b4c267e-8360-16c9-d019-c0b2fe013cad/AppIcon-0-0-1x_U007emarketing-0-0-0-9-0-85-220.png/246x0w.png",
+          ),
+          // Image.network(
+          //     "https://is1-ssl.mzstatic.com/image/thumb/Purple113/v4/6b/4c/26/6b4c267e-8360-16c9-d019-c0b2fe013cad/AppIcon-0-0-1x_U007emarketing-0-0-0-9-0-85-220.png/246x0w.png"),
           FlatButton(
             child: Text("FlatButton"),
             onPressed: () {
